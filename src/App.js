@@ -19,21 +19,37 @@ class App extends Component {
 }
 
 class Header extends Component {
+  state = {
+    openMenu: true
+  }
+  openMenu = () => {
+    this.setState({
+      openMenu: !this.state.openMenu
+    })
+  }
   render() {
+    const style = {
+      bwidth: '0px',
+    };
+    if (this.state.openMenu !== true){
+      style.width = '100px'
+    }
     return (
       <header className="main-header">
         <div className="main-title">
           <h1 className="title">Website Title /</h1>
           <img src={logo} className="App-logo" alt="starlogo" />
-          <button className="menu"><img src={iconMenu} alt="menu trigger icon" /></button>
+          {this.state.openMenu &&
+            <button onClick={this.openMenu} className="menu"><img src={iconMenu} alt="menu trigger icon" /></button>
+          }
         </div>
-        <ul className="main-nav">
-          <li className="close-icon"><a href="javascript:void(0)" className="closebtn">&times;</a></li>
-          <li><a href="#">Item1</a></li>
-          <li><a href="#">Item2</a></li>
-          <li><a href="#">Item3</a></li>
-          <li><a href="#">Item4</a></li>
-        </ul>
+          <ul className="main-nav" style={style}>
+            <li onClick={this.openMenu} className="close-icon"><a href="javascript:void(0)" className="closebtn">&times;</a></li>
+            <li><a href="#">Item1</a></li>
+            <li><a href="#">Item2</a></li>
+            <li><a href="#">Item3</a></li>
+            <li><a href="#">Item4</a></li>
+          </ul>
       </header>
 
     );
@@ -41,16 +57,37 @@ class Header extends Component {
 }
 
 class Banner extends Component {
+  state = {
+    changebanner: true
+  }
+  changebanner = () => {
+    this.setState({
+      changebanner: !this.state.changebanner,
+    })
+  }
   render() {
     return (
-      <div className="banner">
+      <div onClick={this.changebanner} className="banner">
+        {this.state.changebanner &&
         <h1 className="headline">Welcome Message</h1>
+        }
+        {this.state.changebanner == false &&
+        <h1 className="headline">Have a Good Time!</h1>
+        }
       </div>
     );
   }
 }
 
 class MainContent extends Component {
+  state = {
+    hideBox: false
+  }
+  hideBox = () => {
+    this.setState({
+      hideBox: !this.state.hideBox
+    })
+  }
   render() {
     return (
       <div>
@@ -62,13 +99,16 @@ class MainContent extends Component {
           <Box/><Box/><Box/><Box/>
         </div>
 
-        <footer className="mainFooter">
+        <footer onClick={this.hideBox} className="mainFooter" >
           <span>Call to Action</span>
         </footer>
 
+        {this.state.hideBox &&
         <div className="content hide">
           <Box/><Box/><Box/><Box/>
         </div>
+        }
+
       </div>
     );
   }

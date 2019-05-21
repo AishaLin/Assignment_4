@@ -76,6 +76,7 @@ img {
 }
 .name a,
 .main-nav a {
+	cursor: pointer;
 	text-align: center;
 	display: block;
 	padding: 10px 10px;
@@ -118,9 +119,12 @@ img {
 .mainFooter {
 	background: #d9e4ea;
 	padding: 1em 0;
-  width: 190px;
-  margin-top: 50px;
-  margin: auto;
+	width: 190px;
+	margin-top: 50px;
+	margin: auto;
+}
+.mainFooter>span {
+	cursor: pointer;
 }
 .menu {
   width: 35px;
@@ -131,6 +135,7 @@ img {
 	right: 20px;
 }
 .headline {
+	cursor: pointer;
 	margin-bottom: 0;
 }
 .closebtn {
